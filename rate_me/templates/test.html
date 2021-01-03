@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Rate Me</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script>
+        for (var i = 1; i <= 5; i++) {
+            var cur = document.getElementById("star" + i)
+            cur.className = "far fa-star"
+        }
+        for (var i = 1; i <= sno; i++) {
+            var cur = document.getElementById("star" + i)
+            if (cur.className == "far fa-star") {
+                cur.className = "fas fa-star"
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container-fluid color">
+            <a><img class="navbar-brand" src="{% static 'img/logo.png' %}" href="#" style="width: 100px;"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active font_a" aria-current="page" href="/rate_me/home"
+                            style="color: #FFCE2B; font-weight: bold;">Home</a>
+                    </li>
+<!-- nav ####################################################################### -->
+                    {% if request.session.id %}
+                    <li class="nav-item">
+                        <a class="nav-link active font_a" aria-current="page" href="/check/{{user.id}}"
+                            style="color: #FFCE2B; font-weight: bold;">{{user.first_name}} {{user.last_name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active font_a" aria-current="page" href="/rate_me/logout"
+                            style="color: #FFCE2B; font-weight: bold;">log out</a>
+                    </li>
+                    {% endif %}
+                    {% if not request.session.id %}
+                    <li class="nav-item">
+                        <a class="nav-link active font_a" aria-current="page" href="/rate_me/log_in"
+                            style="color: #FFCE2B; font-weight: bold;">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active font_a" aria-current="page" href="/rate_me/registration"
+                            style="color: #FFCE2B; font-weight: bold;">Sign up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex" action="/search" method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="car" >
+                    <button class="btn btn-outline-success" style="background-color: #FFCE2B;"
+                        type="submit">Search</button>
+                </form>
+                <script src="https://code.jquery.com/jquery-1.12.4.js%22%3E"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js%22%3E"></script>
+                    <script>
+                    $( function() {
+                        $( "#search" ).autocomplete({
+                        source:'{% url 'home' %}'
+                        });
+                    } );
+                    </script>
+            </div>
+        </div>
+    </nav>
+    <center>
+        <h1 class="title">Review Your Favorite <span class="span_h1">Car</span></h1>
+        <hr style=" border: 2px solid;
+        border-radius: 5px;">
+    </center><!-- left table################################################ -->
+    <main>
+        <div class="review_list" style="overflow: auto;">
+            <ul class="list-group">
+                <!--                {{request.session.id}}-->
+                {%for ctype in type_list%}
+                <div>
+                    <li class="list-group-item">
+                        <h5>
+                            {%for company in companies%}
+
+
+                            {%if ctype.company == company%}
+                            <p style="font-size: 18px;">{{company.name}}</p>
+                            {%endif%}
+                            {%endfor%}
+                            {{ctype.name}}
+                            {{ctype.description}}
+                            {{ctype.rate.avg}}
+                            {{ctype.avg}}
+
+                            </script>
+                            <p style="font-size: 12px;">{{ctype.nor}} people reviews</p>
+                                     <ul class="list-inline">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                        </h5>
+                    </li>
+                </div>
+                {%endfor%}
+            </ul>
+        </div>
+        <div class="Category_img">
+            {%for company in companies%}
+            <div class="row">
+                <div class="column" style="width: 200px;height: 200px; padding: 2px;">
+                    <a href="/rate_me/company/{{company.id}}">
+                        <img src="/static/img/{{company.name}}.png" class="image" alt="{{company.name}} logo"
+                            width="130px" height="120px">
+                    </a>
+                    <div class="middle">
+                        <div class="text">{{company.name}}</div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </main>
+    <div class="bottom section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="copyright">
+                        <a href="#"> Contact us </a>
+                        <span> | </span>
+                        <a href="#"> Company </a>
+                        <span> | </span>
+                        <a href="#"> Why to add review? </a>
+                        <p>© <span>2020</span> Rate Me <span>All rights reserved.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

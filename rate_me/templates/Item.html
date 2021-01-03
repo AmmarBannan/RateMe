@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/item.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Categories </title>
+    <script>
+        var c=3,s=3,p=3,f=3,d=3,av=3
+        function add1(ths, sno) {
+            for (var i = 1; i <= 5; i++) {
+                var cur = document.getElementById("star1" + i)
+                cur.className = "far fa-star"
+            }
+            for (var i = 1; i <= sno; i++) {
+                var cur = document.getElementById("star1" + i)
+                if (cur.className == "far fa-star") {
+                    cur.className = "fas fa-star"
+                }
+            }
+
+            document.getElementById("id1").innerHTML = sno;
+            c=sno
+            document.getElementById("id7").innerHTML = "your rate:"+(c+d+p+f+s)/5;avg=(c+d+p+f+s)/5;
+        }
+        function add2(ths, sno) {
+            for (var i = 1; i <= 5; i++) {
+                var cur = document.getElementById("star2" + i)
+                cur.className = "far fa-star"
+            }
+            for (var i = 1; i <= sno; i++) {
+                var cur = document.getElementById("star2" + i)
+                if (cur.className == "far fa-star") {
+                    cur.className = "fas fa-star"
+                }
+            }
+            document.getElementById("id2").innerHTML = sno;
+            s=sno
+            document.getElementById("id7").innerHTML = "your rate:"+(c+d+p+f+s)/5;avg=(c+d+p+f+s)/5;
+        }
+        function add3(ths, sno) {
+            for (var i = 1; i <= 5; i++) {
+                var cur = document.getElementById("star3" + i)
+                cur.className = "far fa-star"
+            }
+            for (var i = 1; i <= sno; i++) {
+                var cur = document.getElementById("star3" + i)
+                if (cur.className == "far fa-star") {
+                    cur.className = "fas fa-star"
+                }
+            }
+            document.getElementById("id3").innerHTML = sno;
+            d=sno
+            document.getElementById("id7").innerHTML = "your rate:"+(c+d+p+f+s)/5;
+            avg=(c+d+p+f+s)/5;
+        }
+        function add4(ths, sno) {
+            for (var i = 1; i <= 5; i++) {
+                var cur = document.getElementById("star4" + i)
+                cur.className = "far fa-star"
+            }
+            for (var i = 1; i <= sno; i++) {
+                var cur = document.getElementById("star4" + i)
+                if (cur.className == "far fa-star") {
+                    cur.className = "fas fa-star"
+                }
+            }
+            document.getElementById("id4").innerHTML = sno;
+            p=sno;
+            document.getElementById("id7").innerHTML = "your rate:"+(c+d+p+f+s)/5;
+            avg=(c+d+p+f+s)/5;
+        }
+        function add6(ths, sno) {
+            for (var i = 1; i <= 5; i++) {
+                var cur = document.getElementById("star6" + i)
+                cur.className = "far fa-star"
+            }
+            for (var i = 1; i <= sno; i++) {
+                var cur = document.getElementById("star6" + i)
+                if (cur.className == "far fa-star") {
+                    cur.className = "fas fa-star"
+                }
+            }
+            f=sno
+            document.getElementById("id6").innerHTML = sno
+            document.getElementById("id7").innerHTML = "your rate:"+(c+d+p+f+s)/5;
+        }
+        // $(function(){
+        //     $("#test").click(function(){
+        //         $.ajax({
+        //             dataType: "json",
+        //             type : "POST",
+        //             url: "/rate/1",
+        //             data:{
+        //                 'com':'3',
+        //                 'dur':'4',
+        //                 'saf':'4',
+        //                 'pri':'4',
+        //                 'fue':'4',
+        //                 'avg':'av',
+        //             },
+        //             success : function(result){
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
+</head>
+
+<body>
+    <nav id="navhome">
+        <p><a href="/rate_me/home" class="navbar-brand"> Home</a></p>
+        {% if request.session.id %}
+            <div style="display: flex;">
+                <a class="nav-link active font_a" aria-current="page" href="/rate_me/user/{{user.id}}"
+                style="color: #FFCE2B; font-weight: bold;">{{user.first_name}} {{user.last_name}}</a>
+                <a class="nav-link active font_a" aria-current="page" href="/rate_me/logout"
+                style="color: #FFCE2B; font-weight: bold;">log out</a>
+            </div>
+        {% else %}
+            <div style="display: flex;">    
+                <a class="nav-link active font_a" aria-current="page" href="/rate_me/log_in"
+                style="color: #FFCE2B; font-weight: bold;">Log in</a>
+                <a class="nav-link active font_a" aria-current="page" href="/rate_me/registration"
+                style="color: #FFCE2B; font-weight: bold;">Sign up</a>
+            </div>
+        {% endif %}
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="topC">
+        <img src="/static/img/{{type.name}}.png" height="220px"
+            width="320px" style="margin-top: 20px;">
+        <div>
+            <h1> {{type.name}} <b>{{type.description}}</b> </h1>
+            <h5>number of reviews {{type.nor}} </h5>
+            <h4><br>over all rating    {{type.avg}}</h4>
+            
+        </div>
+    </div>
+    <hr style="border: 2px solid ;">
+    <div class="container">
+        <div class="row">
+            <div class="col" id="box1">
+            <h4> User Review</h4>
+            {%if request.session.id%}
+            {%for rate in user_review%}
+            <p>yours   {{rate.avg}}</p><div><textarea rows="4" cols="50" name="comment" form="usrform">{{rate.comment}}</textarea></div>
+            <a href="/deleteit/{{rate.car_type.id}}/{{rate.id}}">delete</a>
+            <hr>
+            {%endfor%}
+            {%for rate in other_review%}
+                <p>{{rate.user.first_name}} {{rate.user.last_name}}  {{rate.avg}}</p><div><textarea rows="4" cols="50" name="comment" form="usrform">{{rate.comment}}</textarea></div>
+                <hr>
+            {%endfor%}
+            {%else%}
+            {%for rate in rates%}
+            <p>{{rate.user.first_name}} {{rate.user.last_name}}  {{rate.avg}}</p><div><textarea rows="4" cols="50" name="comment" form="usrform">{{rate.comment}}</textarea></div>
+            <hr>
+            {%endfor%}
+            {%endif%}
+
+            </div>
+            <form action="/rate/{{id_item}}" method="POST">{% csrf_token %}
+                <div class="col" id="box2">
+                    <h3> ADD A REVIEW </h3>
+                    <div class="form-group1">
+                        <label for="">Comfort</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" id="star11" onclick="add1(this,1)"></i>
+                            <i class="fas fa-star" id="star12" onclick="add1(this,2)"></i>
+                            <i class="fas fa-star" id="star13" onclick="add1(this,3)"></i>
+                            <i class="far fa-star" id="star14" onclick="add1(this,4)"></i>
+                            <i class="far fa-star" id="star15" onclick="add1(this,5)"></i>
+                            <!-- <p id="id1" value >3</p> -->  
+                            <select name="Comfort" id="id1" >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group2">
+                        <label for="">Durable</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" id="star21" onclick="add2(this,1)"></i>
+                            <i class="fas fa-star" id="star22" onclick="add2(this,2)"></i>
+                            <i class="fas fa-star" id="star23" onclick="add2(this,3)"></i>
+                            <i class="far fa-star" id="star24" onclick="add2(this,4)"></i>
+                            <i class="far fa-star" id="star25" onclick="add2(this,5)"></i>
+                            <!-- <i id=id2>3</i> -->
+                            <select name="Durable" id="id2">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group3">
+                        <label for="">Safety</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" id="star31" onclick="add3(this,1)"></i>
+                            <i class="fas fa-star" id="star32" onclick="add3(this,2)"></i>
+                            <i class="fas fa-star" id="star33" onclick="add3(this,3)"></i>
+                            <i class="far fa-star" id="star34" onclick="add3(this,4)"></i>
+                            <i class="far fa-star" id="star35" onclick="add3(this,5)"></i>
+                            <!-- <i id=id3>3</i> -->
+                            <select name="Safety" id="id3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group4">
+                        <label for="">Price</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" id="star41" onclick="add4(this,1)"></i>
+                            <i class="fas fa-star" id="star42" onclick="add4(this,2)"></i>
+                            <i class="fas fa-star" id="star43" onclick="add4(this,3)"></i>
+                            <i class="far fa-star" id="star44" onclick="add4(this,4)"></i>
+                            <i class="far fa-star" id="star45" onclick="add4(this,5)"></i>
+                            <!-- <i id=id4>3</i> -->
+                            <select name="Price" id="id4">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+ 
+                        </div>
+                    </div>
+                    <div class="form-group5">
+                        <label for="">Fuel</label>
+                        <div class="star-rating">
+                            <i class="fas fa-star" id="star61" onclick="add6(this,1)"></i>
+                            <i class="fas fa-star" id="star62" onclick="add6(this,2)"></i>
+                            <i class="fas fa-star" id="star63" onclick="add6(this,3)"></i>
+                            <i class="far fa-star" id="star64" onclick="add6(this,4)"></i>
+                            <i class="far fa-star" id="star65" onclick="add6(this,5)"></i>
+                            <!-- <i id=id6>3</i> -->
+                            <select name="Fuel" id="id6">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Add Review</label>
+                        <div> <textarea rows="4" cols="50" name="comment" ></textarea></div>
+                        <input id="test"  type="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2020</span> <a href="#" class="transition">RateME</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

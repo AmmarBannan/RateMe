@@ -1,0 +1,165 @@
+.logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+    height: 120px;
+    margin-left: 200px;
+    margin-top: 15px;
+}
+
+main {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+}
+
+.review_list {
+    width: 50%;
+    height: 500px;
+    margin: 10px;
+    overflow: auto;
+}
+
+
+.bottom {
+    display: flex;
+    height: 40px;
+    text-align: center;
+    width: 100%;
+    background-color: #B2AFAC;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom>a {
+    text-decoration: none;
+    color: #42413D;
+    padding: 10px;
+}
+
+.bottom>a:hover {
+    color: #42413D;
+    background-color: #FFCE2B;
+
+}
+
+
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.bottom {
+    background-color: #42413D;
+}
+
+.bottom .copyright {
+    color: #e5e5e5;
+    font-weight: 600;
+}
+
+.copyright a {
+    color: #FFCE2B;
+    margin-left: 3px;
+    padding-right: 3px;
+    text-decoration: none;
+}
+
+.bottom p {
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.copyright p span {
+    color: #d1caca;
+}
+
+.bottom .copyright p,
+.bottom .copyright a:hover {
+    color: #FFCE2B;
+}
+
+.color {
+    background-color: #42413D;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.title {
+    margin-top: 20px;
+    color: #42413D;
+}
+
+hr {
+    width: 150px;
+}
+
+.span_h1 {
+    color: #FFCE2B;
+}
+
+#edit {
+    float: right;
+    text-decoration: none;
+    color: #FFCE2B;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#font_a {
+    color: #FFCE2B;
+    font-weight: bold;
+    float: right;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}

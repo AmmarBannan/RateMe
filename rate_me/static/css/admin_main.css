@@ -1,0 +1,90 @@
+.review_links {
+    width: 20%;
+    height: auto;
+    margin: 10px;
+}
+
+.all_reviews {
+    width: 40%;
+    height: auto;
+    margin: 10px;
+    overflow: auto;
+
+}
+
+.color {
+    background-color: #42413D;
+}
+
+#font_a {
+    color: #FFCE2B;
+    font-weight: bold;
+    float: right;
+}
+
+#button {
+    background-color: #FFCE2B;
+    color: #42413D;
+}
+
+.title {
+    text-align: center;
+}
+
+main {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+}
+
+#edit {
+    float: right;
+    text-decoration: none;
+    color: #FFCE2B;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.box3 {
+    outline: 3px solid #FFCE2B;
+    height: auto;
+    width: auto;
+    padding: 43px;
+    margin: 20px;
+}
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.bottom {
+    background-color: #42413D;
+}
+
+.bottom .copyright {
+    color: #e5e5e5;
+    font-weight: 600;
+}
+
+.copyright a {
+    color: #FFCE2B;
+    margin-left: 3px;
+    padding-right: 3px;
+    text-decoration: none;
+}
+
+.bottom p {
+    margin-bottom: 0;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.copyright p span {
+    color: #d1caca;
+}
+
+.bottom .copyright p,
+.bottom .copyright a:hover {
+    color: #FFCE2B;
+}

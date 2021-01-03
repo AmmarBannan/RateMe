@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Registration</title>
+</head>
+<body>
+    <main>
+        <fieldset>
+            <legend><h2>Register</h2></legend>
+            <form action="/rate_me/register" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="first_name" class="col-form-label"> First Name</label>
+                    <div><input type="text" class="form-control" name="first_name" id="first_name" placeholder="name" required></div>
+                </div>
+                <div class="form-group row">
+                    <label for="last_name" class="col-form-label"> Last Name</label>
+                    <div><input type="text" name="last_name" id="last_name" placeholder="surname" class="form-control" required></div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-form-label"> Email</label>
+                    <div><input type="email" name=email id="email" placeholder="name@example.com" class="form-control" required></div>                    
+                </div>
+                <div class="form-group row">
+                   <label for="birthday" class="col-form-label" >Birthday:</label>
+                    <div><input type="date" id="birthday" class="form-control" name="birthday" required></div>
+                </div>
+                <div class="form-group">
+                <label for="exampleFormControlSelect1" class="col-form-label">Gender</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="gender" required>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+                <div class="form-group row">
+                    <label for="password" class="col-form-label">Password</label>
+                    <div><input type="password" name="password" id="password" placeholder="password" class="form-control" required></div>
+                </div>
+                <div class="form-group row">
+                    <label for="password_confirm" class="col-form-label">Confirm Password</label>
+                    <div><input type="password" name="password_confirm" id="password_confirm" placeholder="confrim password" class="form-control" required></div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn" id="color">Sign Up</button>
+                    </div>
+                </div>
+                <a href="/rate_me/log_in">Already have an account log in here</a>
+            </form>
+        </fieldset>
+        </main>
+</body>
+</html>

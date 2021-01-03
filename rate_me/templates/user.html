@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Categories </title>
+</head>
+
+<body>
+    <nav id="navhome">
+        <p><a href="/" class="navbar-brand"> Home</a></p>
+        <p><a href="/rate_me/logout" class="navbar-brand">logout </a></p>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <center>
+        <div class="box3">
+            <h1> Edit My Account </h1>
+            <form action="/update/{{user.id}}" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td> First Name:<br> <input type="text" name="first_name" value="{{user.first_name}}"required><br><br></td>
+                    </tr>
+                    <tr>
+                        <td> Last Name:<br> <input type="text" name="last_name" value="{{user.last_name}}"required><br><br></td>
+                    </tr>
+                    <tr> 
+                        <td>E-mail:<br> <input type="email" name="email" value="{{user.email}}"required><br><br> </td>
+                    </tr>
+                    <tr>
+                        <td>  <input type="submit" value="edit" class="button"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </center>
+        <div class="bottom section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="copyright">
+							<p>© <span>2020</span> <a href="#" class="transition">RateME</a> All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<a href="/rate_me/home">home</a>
+	{%if request.session.id is None%}
+	<div>
+		<a href="/user">{{first_name}} {{last_name}}</a>
+		<a href="/rate_me/logout">logout</a>
+	</div>
+	{%else%}
+	<div>
+		<a href="/rate_me/registration">register</a>
+		<a href="/rate_me/log_in">login</a>
+	</div>
+	{%endif%}
+
+	{%for company in companies%}
+		<div style="width: 500px;">
+			<a href="rat_me/company/{{company.id}}">{{company.name}}</a>
+			<img src="{{company.name}}.png" alt="{{company.name}} logo">
+		</div>
+	{%endfor%}
+
+	<!-- {%for company in compamies%}
+	{%for type in company.type%}
+	{{type.name}}
+	{{type.model}}
+	{{type.description}}
+	{%endfor%}
+	{%endfor%} -->
+	
+	{%for ctype in type_list%}
+	<br>
+	{%for company in companies%}
+		{%if ctype.company == company%}
+			{{company.name}}
+		{%endif%}
+	{%endfor%}
+	{{ctype.name}}
+	{{ctype.description}}
+	{{ctype.rate.avg}}
+	{%endfor%}
+
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/admin_main.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container-fluid color">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <h2 style="color: #959492;" >Welcome {{user.first_name}}</h2>
+                    <li class="nav-item">
+                        <a class="nav-link active " id="font_a" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " id="font_a" aria-current="page" href="/rate_me/logout">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="review_links">
+            <h1 class="title">View</h1>
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body" style="overflow: scroll; height:200px; width: 290px;">
+                    <h5 class="card-title">Add an admin</h5>
+                    <table>
+                        {%for use in users%}
+                        <tr>
+                            <td>{{use.first_name}} {{use.last_name}}  </td> 
+                            <td><a href="/makeadmin/{{use.id}}"><input type="submit" class="btn btn-primary"  value="add" > </a></td>
+                            <td><a href="/deleteuseer/{{use.id}}"><input type="submit" class="btn btn-primary"  value="delete" > </a></td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    </select>
+                </div>
+            </div>
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">All Categories</h5>
+                    <p class="card-text">Click to show all the categories</p>
+                    <a href="#" class="btn btn-primary" id="button">Go there</a>
+                </div>
+            </div>
+            <div class="card text-center" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">All Items</h5>
+                    <p class="card-text">Click to show all the items</p>
+                    <a href="#" class="btn btn-primary" id="button">Go there</a>
+                </div>
+            </div>
+        </div>
+        <div style="display: block;padding: 10px; align-items: center;">
+            <div class="all_reviews" style="width: 600px;">
+                <h1 class="title">All Reviews</h1>
+                <ul class="list-group">
+                    <div>
+                        {% for rate in rates %}
+                        <li class="list-group-item" style="align-items: center;">
+                            <h5>{{rate.comment}}</h5><p>{{rate.car_type.name}}</p> name reviewer <a href="user/{{rate.user.id}}">{{rate.user.first_name}} {{rate.user.last_name}}</a>
+                                <a id="edit" href="deleteit/{{rate.car_type.id}}/{{rate.id}}">Delete</a>
+                        </li>
+                        {%endfor%}
+                    </div>
+                </ul>
+            </div>
+            <div class="all_categories" style="width: 600px;">
+                <h2 class="title">All categories</h2>
+                <ul class="list-group">
+                    <div>
+                        {% for company in companies %}
+                        <li class="list-group-item">
+                            <h5>{{company.name}} 
+                                <a id="edit" href="deleteit/{{rate.car_type.id}}/{{rate.id}}">Delete</a></h5>
+                        </li>
+                        {%endfor%}
+                    </div>
+                </ul>
+            </div>
+            <div class="all_categories" style="width: 600px;">
+                <h2 class="title">All types</h2>
+                <ul class="list-group">
+                    <div>
+                        {% for type in types %}
+                        <li class="list-group-item">
+                            <h5>{{type.name}} 
+                                <a id="edit" href="deletetype/{{type.id}}">Delete</a></h5>
+                        </li>
+                        {%endfor%}
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div style="display:block;width:600px;">
+            <div class="all_reviews" style="display: block;width:550px;"  >
+                <h1 class="title">Add Categorys</h1>
+                <div class="box3">
+                    <form action="/upload" method="POST">
+                        {% csrf_token %}
+                        
+                        Category Name:<input type="text" name="name" style="margin-left: 95px;" required><br><br>
+                        add description<input type="text" name="description" style="margin-left: 95px;" required><br><br>
+                        <button type="submit" class="btn btn-primary" id="button">Update </button>
+                    </form>
+                </div>
+            </div>
+            <div class="all_reviews" style="display: block; width: 550px;">
+                <h1 class="title">Add car_type</h1>
+                <div class="box3">
+                    <form action="/uploadtype/{{user.id}}" method="POST">
+                        {% csrf_token %}
+                        Company <select name="company" >
+                            {%for company in companies%}
+                            <option value="{{company.id}}">
+                            {{company.name}}
+                            </option>
+                            {%endfor%}
+                        </select><br>
+                        car_type Name:<input type="text" name="name" style="margin-left: 95px;" required><br><br>
+                        add description<input type="text" name="description" style="margin-left: 95px;" required><br><br>
+                        <button type="submit" class="btn btn-primary" id="button">Update </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="bottom section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="copyright">
+                        <a href="#"> Contact us </a>
+                        <span> | </span>
+                        <a href="#"> Company </a>
+                        <span> | </span>
+                        <a href="#"> Why to add review? </a>
+                        <p>© <span>2020</span> Rate Me <span>All rights reserved.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

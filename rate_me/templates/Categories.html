@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login-regi-style.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Categories </title>
+</head>
+
+<body>
+    <nav id="navhome">
+        <p><a href="/" class="navbar-brand"> Home</a></p>
+        {%if request.session.id%}
+        <a class="nav-link active font_a" aria-current="page" href="/check/{{user.id}}"
+        style="color: #FFCE2B; font-weight: bold;">{{user.first_name}} {{user.last_name}}</a>
+        <a class="nav-link active font_a" aria-current="page" href="/rate_me/logout"
+        style="color: #FFCE2B; font-weight: bold;">log out</a>
+        {%else%}
+        <a class="nav-link active font_a" aria-current="page" href="/rate_me/log_in"
+        style="color: #FFCE2B; font-weight: bold;">Log in</a>
+        <a class="nav-link active font_a" aria-current="page" href="/rate_me/registration"
+        style="color: #FFCE2B; font-weight: bold;">Sign up</a>
+        {%endif%}
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="topC">
+        <img src="/static/img/{{companies.name}}.png"class="image" alt="{{company.name}} logo" width="320" height="220">
+        <div>
+            <h1>{{companies.name}}</h1>
+            <p>{{ companies.description}}</p>
+        </div>
+    </div>
+    <hr style="border: 2px solid ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Car <b>Models</b></h2>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>   
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner">
+                    <div class="item carousel-item active">
+                        <div class="row">
+                            {% for ctype in types %}
+                            <div class="col-sm-3">
+                                <div class="thumb-wrapper">
+                                    <div class="img-box">
+                                        <img src="/static/img/{{ctype.name}}.png"class="img-responsive img-fluid" alt="{{ctype.name}}">
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4><a href="/rate_me/type/{{ctype.id}}">{{ctype.name}}</a></h4>
+                                        <p class="item-price">Number of reviews </p>
+                                        <div class="star-rating">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>						
+                                </div>
+                            </div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="item carousel-item">
+                        <div class="row">					
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="copyright">
+                        <a href="#"> Contact us </a>
+                        <span> | </span>
+                        <a href="#"> Company </a>
+                        <span> | </span>
+                        <a href="#"> Why to add review? </a>
+                        <p>© <span>2020</span> Rate Me <span>All rights reserved.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
